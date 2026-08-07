@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>CalcVerse | Calculadoras Online Gratis</title>
+
+  <meta name="description" content="CalcVerse: calculadoras online gratuitas de IMC, calorías, porcentajes y mucho más.">
+
+  <meta name="keywords" content="calculadora IMC, calculadora calorías, calculadoras online, calculadora porcentaje">
+
+  <meta name="author" content="CalcVerse">
+
+  <meta name="theme-color" content="#0B0B0F">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="logo">
+      🧮 <span>CalcVerse</span>
+    </div>
+
+    <nav>
+      <a href="#inicio">Inicio</a>
+      <a href="#calculadoras">Calculadoras</a>
+      <a href="#blog">Blog</a>
+      <a href="#acerca">Acerca</a>
+    </nav>
+
+    <button id="themeToggle" class="theme-btn" aria-label="Cambiar tema">
+      ☀️
+    </button>
+  </header>
+
+
+  <main>
+
+    <!-- HERO -->
+    <section id="inicio" class="hero">
+
+      <div class="hero-content">
+
+        <span class="badge">✨ Herramientas gratuitas</span>
+
+        <h1>
+          Todas las calculadoras
+          <span>que necesitas.</span>
+        </h1>
+
+        <p>
+          Calcula tu IMC, calorías, porcentajes y mucho más
+          de forma rápida, sencilla y gratuita.
+        </p>
+
+        <a href="#calculadoras" class="primary-btn">
+          Comenzar →
+        </a>
+
+      </div>
+
+    </section>
+
+
+    <!-- CATEGORÍAS -->
+    <section class="section">
+
+      <div class="section-heading">
+        <span>EXPLORA</span>
+        <h2>¿Qué quieres calcular?</h2>
+        <p>Encuentra la herramienta que necesitas.</p>
+      </div>
+
+      <div class="categories">
+
+        <div class="category-card">
+          <div class="category-icon">🏋️</div>
+          <h3>Salud</h3>
+          <p>IMC, calorías y bienestar.</p>
+        </div>
+
+        <div class="category-card">
+          <div class="category-icon">💰</div>
+          <h3>Finanzas</h3>
+          <p>Dinero, intereses y ahorro.</p>
+        </div>
+
+        <div class="category-card">
+          <div class="category-icon">📚</div>
+          <h3>Educación</h3>
+          <p>Promedios y herramientas escolares.</p>
+        </div>
+
+        <div class="category-card">
+          <div class="category-icon">📐</div>
+          <h3>Matemáticas</h3>
+          <p>Operaciones y conversiones.</p>
+        </div>
+
+        <div class="category-card">
+          <div class="category-icon">🌍</div>
+          <h3>Conversores</h3>
+          <p>Convierte unidades fácilmente.</p>
+        </div>
+
+        <div class="category-card">
+          <div class="category-icon">❤️</div>
+          <h3>Vida diaria</h3>
+          <p>Herramientas para todos los días.</p>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- CALCULADORAS -->
+    <section id="calculadoras" class="section calculators-section">
+
+      <div class="section-heading">
+        <span>CALCULADORAS</span>
+        <h2>Herramientas populares</h2>
+        <p>Resultados rápidos y fáciles de entender.</p>
+      </div>
+
+
+      <div class="calculator-grid">
+
+        <!-- IMC -->
+        <article class="calculator-card">
+
+          <div class="calculator-top">
+            <div class="calculator-icon">🏋️</div>
+            <span>Salud</span>
+          </div>
+
+          <h3>Calculadora de IMC</h3>
+
+          <p>
+            Calcula tu índice de masa corporal introduciendo
+            tu peso y altura.
+          </p>
+
+          <div class="form-group">
+            <label for="weight">Peso (kg)</label>
+            <input
+              type="number"
+              id="weight"
+              placeholder="Ej. 65"
+              min="1"
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="height">Altura (cm)</label>
+            <input
+              type="number"
+              id="height"
+              placeholder="Ej. 170"
+              min="1"
+            >
+          </div>
+
+          <button id="calculateBMI" class="calculator-btn">
+            Calcular IMC
+          </button>
+
+          <div id="bmiResult" class="result" aria-live="polite"></div>
+
+        </article>
+
+
+        <!-- CALORÍAS -->
+        <article class="calculator-card">
+
+          <div class="calculator-top">
+            <div class="calculator-icon">🔥</div>
+            <span>Salud</span>
+          </div>
+
+          <h3>Calculadora de calorías</h3>
+
+          <p>
+            Estima tus calorías de mantenimiento según
+            tus características y actividad.
+          </p>
+
+          <div class="form-group">
+
+            <label for="gender">Sexo</label>
+
+            <select id="gender">
+              <option value="male">Hombre</option>
+              <option value="female">Mujer</option>
+            </select>
+
+          </div>
+
+          <div class="form-group">
+
+            <label for="age">Edad</label>
+
+            <input
+              type="number"
+              id="age"
+              placeholder="Ej. 20"
+              min="1"
+              max="120"
+            >
+
+          </div>
+
+          <div class="form-group">
+
+            <label for="calWeight">Peso (kg)</label>
+
+            <input
+              type="number"
+              id="calWeight"
+              placeholder="Ej. 65"
+              min="1"
+            >
+
+          </div>
+
+          <div class="form-group">
+
+            <label for="calHeight">Altura (cm)</label>
+
+            <input
+              type="number"
+              id="calHeight"
+              placeholder="Ej. 170"
+              min="1"
+            >
+
+          </div>
+
+          <div class="form-group">
+
+            <label for="activity">Actividad</label>
+
+            <select id="activity">
+
+              <option value="1.2">
+                Poco o nada de ejercicio
+              </option>
+
+              <option value="1.375">
+                Ejercicio ligero
+              </option>
+
+              <option value="1.55">
+                Ejercicio moderado
+              </option>
+
+              <option value="1.725">
+                Ejercicio intenso
+              </option>
+
+              <option value="1.9">
+                Ejercicio muy intenso
+              </option>
+
+            </select>
+
+          </div>
+
+          <button id="calculateCalories" class="calculator-btn">
+            Calcular calorías
+          </button>
+
+          <div
+            id="calorieResult"
+            class="result"
+            aria-live="polite">
+          </div>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- BLOG -->
+    <section id="blog" class="section">
+
+      <div class="section-heading">
+
+        <span>BLOG</span>
+
+        <h2>Aprende algo nuevo</h2>
+
+        <p>
+          Información sencilla para ayudarte a entender tus resultados.
+        </p>
+
+      </div>
+
+
+      <div class="blog-grid">
+
+        <article class="blog-card">
+
+          <div class="blog-image">⚖️</div>
+
+          <div class="blog-content">
+
+            <span>Salud</span>
+
+            <h3>¿Qué es el IMC?</h3>
+
+            <p>
+              Descubre qué significa el índice de masa corporal
+              y cómo se interpreta.
+            </p>
+
+            <a href="#">Leer más →</a>
+
+          </div>
+
+        </article>
+
+
+        <article class="blog-card">
+
+          <div class="blog-image">🔥</div>
+
+          <div class="blog-content">
+
+            <span>Nutrición</span>
+
+            <h3>¿Cuántas calorías necesito?</h3>
+
+            <p>
+              Aprende qué factores influyen en las necesidades
+              energéticas de una persona.
+            </p>
+
+            <a href="#">Leer más →</a>
+
+          </div>
+
+        </article>
+
+
+        <article class="blog-card">
+
+          <div class="blog-image">🌱</div>
+
+          <div class="blog-content">
+
+            <span>Bienestar</span>
+
+            <h3>Consejos para una vida saludable</h3>
+
+            <p>
+              Pequeños hábitos que pueden ayudarte a cuidar
+              tu bienestar.
+            </p>
+
+            <a href="#">Leer más →</a>
+
+          </div>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- ACERCA -->
+    <section id="acerca" class="about">
+
+      <div>
+
+        <span>CALCVERSE</span>
+
+        <h2>Herramientas simples para decisiones más fáciles.</h2>
+
+        <p>
+          Nuestro objetivo es crear herramientas gratuitas,
+          rápidas y fáciles de utilizar para todo el mundo.
+        </p>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer>
+
+    <div class="footer-logo">
+      🧮 CalcVerse
+    </div>
+
+    <div class="footer-links">
+      <a href="#">Privacidad</a>
+      <a href="#">Aviso legal</a>
+      <a href="#">Contacto</a>
+    </div>
+
+    <p>
+      © 2026 CalcVerse. Todos los derechos reservados.
+    </p>
+
+  </footer>
+
+
+  <!-- BOTÓN VOLVER ARRIBA -->
+  <button
+    id="backToTop"
+    class="back-to-top"
+    aria-label="Volver arriba">
+    ↑
+  </button>
+
+
+  <script src="script.js"></script>
+
+</body>
+    </html>
