@@ -1,53 +1,33 @@
-/* =================================
-   CALCVERSE - JAVASCRIPT
-   ================================= */
+// ==========================================
+// CALCVERSE - JAVASCRIPT
+// ==========================================
 
 
-/* ================================
-   CAMBIAR TEMA
-   ================================ */
+// ==========================================
+// CAMBIO DE TEMA
+// ==========================================
 
 const themeToggle = document.getElementById("themeToggle");
 
-let lightMode = false;
-
 themeToggle.addEventListener("click", () => {
 
-  lightMode = !lightMode;
+  document.body.classList.toggle("light-mode");
 
-  if (lightMode) {
-
-    document.documentElement.style.setProperty("--bg", "#f5f5f7");
-    document.documentElement.style.setProperty("--bg-secondary", "#ffffff");
-    document.documentElement.style.setProperty("--card", "#ffffff");
-    document.documentElement.style.setProperty("--card-hover", "#f1f1f5");
-    document.documentElement.style.setProperty("--border", "rgba(0,0,0,0.1)");
-    document.documentElement.style.setProperty("--text", "#111111");
-    document.documentElement.style.setProperty("--text-secondary", "#666666");
-
+  if (document.body.classList.contains("light-mode")) {
     themeToggle.textContent = "🌙";
-
   } else {
-
-    document.documentElement.style.setProperty("--bg", "#0b0b0f");
-    document.documentElement.style.setProperty("--bg-secondary", "#101014");
-    document.documentElement.style.setProperty("--card", "#15151d");
-    document.documentElement.style.setProperty("--card-hover", "#1b1b25");
-    document.documentElement.style.setProperty("--border", "rgba(255,255,255,0.09)");
-    document.documentElement.style.setProperty("--text", "#ffffff");
-    document.documentElement.style.setProperty("--text-secondary", "#a1a1aa");
-
     themeToggle.textContent = "☀️";
   }
 
 });
 
 
-/* ================================
-   CALCULADORA DE IMC
-   ================================ */
+// ==========================================
+// CALCULADORA DE IMC
+// ==========================================
 
 const calculateBMI = document.getElementById("calculateBMI");
+const bmiResult = document.getElementById("bmiResult");
 
 calculateBMI.addEventListener("click", () => {
 
@@ -59,14 +39,11 @@ calculateBMI.addEventListener("click", () => {
     document.getElementById("height").value
   );
 
-  const result = document.getElementById("bmiResult");
-
-
   if (!weight || !height || weight <= 0 || height <= 0) {
 
-    result.classList.add("show");
+    bmiResult.classList.add("show");
 
-    result.innerHTML = `
+    bmiResult.innerHTML = `
       <strong>⚠️</strong>
       Introduce un peso y una altura válidos.
     `;
@@ -74,56 +51,51 @@ calculateBMI.addEventListener("click", () => {
     return;
   }
 
-
-  // Convertimos centímetros a metros
-
   const heightMeters = height / 100;
-
-
-  // Fórmula del IMC
 
   const bmi = weight / (heightMeters * heightMeters);
 
-
-  let category;
-
+  let classification = "";
 
   if (bmi < 18.5) {
-
-    category = "Bajo peso";
-
+    classification = "Bajo peso";
   } else if (bmi < 25) {
-
-    category = "Rango considerado normal";
-
+    classification = "Rango normal";
   } else if (bmi < 30) {
-
-    category = "Sobrepeso";
-
+    classification = "Sobrepeso";
   } else {
-
-    category = "Obesidad";
-
+    classification = "Obesidad";
   }
 
+  bmiResult.classList.add("show");
 
-  result.classList.add("show");
+  bmiResult.innerHTML = `
+    <div class="result-number">
+      ${bmi.toFixed(1)}
+    </div>
 
-  result.innerHTML = `
-    <strong>${bmi.toFixed(1)}</strong>
-    <span>${category}</span>
+    <div class="result-text">
+      ${classification}
+    </div>
+
+    <small>
+      El IMC es una medida orientativa. En adolescentes
+      debe interpretarse considerando la edad y el desarrollo.
+    </small>
   `;
 
 });
 
 
-/* ================================
-   CALCULADORA DE CALORÍAS
-   ================================ */
+// ==========================================
+// CALCULADORA DE CALORÍAS
+// ==========================================
 
 const calculateCalories =
   document.getElementById("calculateCalories");
 
+const calorieResult =
+  document.getElementById("calorieResult");
 
 calculateCalories.addEventListener("click", () => {
 
@@ -142,9 +114,6 @@ calculateCalories.addEventListener("click", () => {
   const activity =
     parseFloat(document.getElementById("activity").value);
 
-  const result =
-    document.getElementById("calorieResult");
-
 
   if (
     !age ||
@@ -155,9 +124,9 @@ calculateCalories.addEventListener("click", () => {
     height <= 0
   ) {
 
-    result.classList.add("show");
+    calorieResult.classList.add("show");
 
-    result.innerHTML = `
+    calorieResult.innerHTML = `
       <strong>⚠️</strong>
       Completa todos los campos correctamente.
     `;
@@ -166,19 +135,9 @@ calculateCalories.addEventListener("click", () => {
   }
 
 
-  /*
-    Fórmula Mifflin-St Jeor
-
-    Hombre:
-    10 × peso + 6.25 × altura - 5 × edad + 5
-
-    Mujer:
-    10 × peso + 6.25 × altura - 5 × edad - 161
-  */
-
+  // Fórmula Mifflin-St Jeor
 
   let bmr;
-
 
   if (gender === "male") {
 
@@ -199,25 +158,246 @@ calculateCalories.addEventListener("click", () => {
   }
 
 
-  // Calorías aproximadas de mantenimiento
-
-  const maintenanceCalories =
+  const calories =
     Math.round(bmr * activity);
 
 
-  result.classList.add("show");
+  calorieResult.classList.add("show");
 
-  result.innerHTML = `
-    <strong>${maintenanceCalories}</strong>
-    <span>calorías aproximadas al día</span>
+  calorieResult.innerHTML = `
+    <div class="result-number">
+      ${calories.toLocaleString()} kcal
+    </div>
+
+    <div class="result-text">
+      Estimación diaria
+    </div>
+
+    <small>
+      Es una estimación y puede variar según la persona.
+    </small>
   `;
 
 });
 
 
-/* ================================
-   BOTÓN VOLVER ARRIBA
-   ================================ */
+// ==========================================
+// CATEGORÍAS
+// ==========================================
+
+const categories =
+  document.querySelectorAll(".category-card");
+
+const calculators =
+  document.querySelectorAll(".calculator-card");
+
+
+categories.forEach(category => {
+
+  category.addEventListener("click", () => {
+
+    const selectedCategory =
+      category.dataset.category;
+
+
+    // Salud
+    if (selectedCategory === "salud") {
+
+      document
+        .getElementById("calculadoras")
+        .scrollIntoView({
+          behavior: "smooth"
+        });
+
+
+      calculators.forEach(calculator => {
+
+        if (
+          calculator.dataset.category === "salud"
+        ) {
+
+          calculator.style.display = "block";
+
+        } else {
+
+          calculator.style.display = "none";
+
+        }
+
+      });
+
+    } else {
+
+      alert(
+        "🚀 Esta categoría estará disponible próximamente."
+      );
+
+    }
+
+  });
+
+});
+
+
+// ==========================================
+// BLOG
+// ==========================================
+
+const articles = {
+
+  imc: {
+
+    title: "¿Qué es el IMC?",
+
+    content: `
+      <p>
+        El índice de masa corporal (IMC) es una medida
+        que relaciona el peso y la altura de una persona.
+      </p>
+
+      <p>
+        Puede utilizarse como una referencia general,
+        pero no debe interpretarse de manera aislada.
+      </p>
+
+      <p>
+        En niños y adolescentes, la interpretación debe
+        considerar la edad, el sexo y el crecimiento.
+      </p>
+    `
+
+  },
+
+
+  calorias: {
+
+    title: "¿Cuántas calorías necesito?",
+
+    content: `
+      <p>
+        Las necesidades energéticas dependen de factores
+        como la edad, el tamaño corporal y la actividad física.
+      </p>
+
+      <p>
+        Las calculadoras de calorías solamente proporcionan
+        estimaciones y no sustituyen una valoración profesional.
+      </p>
+    `
+
+  },
+
+
+  salud: {
+
+    title: "Consejos para una vida saludable",
+
+    content: `
+      <p>
+        Mantener hábitos saludables incluye dormir bien,
+        mantenerse activo y llevar una alimentación variada.
+      </p>
+
+      <p>
+        También es importante descansar, cuidar la salud
+        mental y mantener buenas relaciones sociales.
+      </p>
+    `
+
+  }
+
+};
+
+
+const readMoreButtons =
+  document.querySelectorAll(".read-more");
+
+
+readMoreButtons.forEach(button => {
+
+  button.addEventListener("click", event => {
+
+    event.preventDefault();
+
+
+    const article =
+      articles[button.dataset.article];
+
+
+    if (!article) return;
+
+
+    const modal =
+      document.createElement("div");
+
+
+    modal.className =
+      "article-modal";
+
+
+    modal.innerHTML = `
+
+      <div class="article-modal-content">
+
+        <button
+          class="close-modal"
+          aria-label="Cerrar artículo">
+
+          ×
+
+        </button>
+
+        <span>
+          BLOG · CALCVERSE
+        </span>
+
+        <h2>
+          ${article.title}
+        </h2>
+
+        <div class="article-text">
+          ${article.content}
+        </div>
+
+      </div>
+
+    `;
+
+
+    document.body.appendChild(modal);
+
+
+    // Cerrar con X
+
+    modal
+      .querySelector(".close-modal")
+      .addEventListener("click", () => {
+
+        modal.remove();
+
+      });
+
+
+    // Cerrar tocando fuera
+
+    modal.addEventListener("click", event => {
+
+      if (event.target === modal) {
+
+        modal.remove();
+
+      }
+
+    });
+
+  });
+
+});
+
+
+// ==========================================
+// BOTÓN VOLVER ARRIBA
+// ==========================================
 
 const backToTop =
   document.getElementById("backToTop");
@@ -241,66 +421,20 @@ window.addEventListener("scroll", () => {
 backToTop.addEventListener("click", () => {
 
   window.scrollTo({
+
     top: 0,
+
     behavior: "smooth"
+
   });
 
 });
 
 
-/* ================================
-   ANIMACIONES AL HACER SCROLL
-   ================================ */
-
-const animatedElements =
-  document.querySelectorAll(
-    ".category-card, .calculator-card, .blog-card"
-  );
-
-
-const observer =
-  new IntersectionObserver(
-    (entries) => {
-
-      entries.forEach((entry) => {
-
-        if (entry.isIntersecting) {
-
-          entry.target.style.opacity = "1";
-
-          entry.target.style.transform =
-            "translateY(0)";
-
-        }
-
-      });
-
-    },
-    {
-      threshold: 0.1
-    }
-  );
-
-
-animatedElements.forEach((element) => {
-
-  element.style.opacity = "0";
-
-  element.style.transform =
-    "translateY(20px)";
-
-  element.style.transition =
-    "opacity 0.6s ease, transform 0.6s ease";
-
-  observer.observe(element);
-
-});
-
-
-/* ================================
-   MENSAJE EN CONSOLA
-   ================================ */
+// ==========================================
+// CONSOLA
+// ==========================================
 
 console.log(
-  "🚀 CalcVerse está funcionando correctamente."
+  "🚀 CalcVerse funcionando correctamente."
 );
