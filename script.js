@@ -438,3 +438,216 @@ backToTop.addEventListener("click", () => {
 console.log(
   "🚀 CalcVerse funcionando correctamente."
 );
+// ==========================================
+// CALCULADORA DE PORCENTAJE
+// ==========================================
+
+const calculatePercent = document.getElementById("calculatePercent");
+
+if (calculatePercent) {
+
+  calculatePercent.addEventListener("click", () => {
+
+    const value = parseFloat(
+      document.getElementById("percentValue").value
+    );
+
+    const percent = parseFloat(
+      document.getElementById("percentNumber").value
+    );
+
+    const result = document.getElementById("percentResult");
+
+    if (isNaN(value) || isNaN(percent)) {
+      result.innerHTML = "⚠️ Introduce valores válidos.";
+      result.classList.add("show");
+      return;
+    }
+
+    const answer = value * (percent / 100);
+
+    result.innerHTML = `
+      <div class="result-number">
+        ${answer.toLocaleString()}
+      </div>
+      <div class="result-text">
+        El ${percent}% de ${value} es ${answer}
+      </div>
+    `;
+
+    result.classList.add("show");
+
+  });
+
+}
+
+
+// ==========================================
+// CALCULADORA DE DESCUENTO
+// ==========================================
+
+const calculateDiscount =
+  document.getElementById("calculateDiscount");
+
+if (calculateDiscount) {
+
+  calculateDiscount.addEventListener("click", () => {
+
+    const price = parseFloat(
+      document.getElementById("discountPrice").value
+    );
+
+    const discount = parseFloat(
+      document.getElementById("discountPercent").value
+    );
+
+    const result =
+      document.getElementById("discountResult");
+
+    if (isNaN(price) || isNaN(discount)) {
+
+      result.innerHTML =
+        "⚠️ Introduce valores válidos.";
+
+      result.classList.add("show");
+
+      return;
+    }
+
+    const saved = price * (discount / 100);
+
+    const finalPrice = price - saved;
+
+    result.innerHTML = `
+      <div class="result-number">
+        $${finalPrice.toLocaleString()}
+      </div>
+
+      <div class="result-text">
+        Ahorras $${saved.toLocaleString()}
+      </div>
+    `;
+
+    result.classList.add("show");
+
+  });
+
+}
+
+
+// ==========================================
+// INTERÉS SIMPLE
+// ==========================================
+
+const calculateInterest =
+  document.getElementById("calculateInterest");
+
+if (calculateInterest) {
+
+  calculateInterest.addEventListener("click", () => {
+
+    const principal = parseFloat(
+      document.getElementById("interestPrincipal").value
+    );
+
+    const rate = parseFloat(
+      document.getElementById("interestRate").value
+    );
+
+    const years = parseFloat(
+      document.getElementById("interestYears").value
+    );
+
+    const result =
+      document.getElementById("interestResult");
+
+    if (
+      isNaN(principal) ||
+      isNaN(rate) ||
+      isNaN(years)
+    ) {
+
+      result.innerHTML =
+        "⚠️ Introduce valores válidos.";
+
+      result.classList.add("show");
+
+      return;
+    }
+
+    const interest =
+      principal * (rate / 100) * years;
+
+    const total =
+      principal + interest;
+
+    result.innerHTML = `
+      <div class="result-number">
+        $${total.toLocaleString()}
+      </div>
+
+      <div class="result-text">
+        Interés generado: $${interest.toLocaleString()}
+      </div>
+    `;
+
+    result.classList.add("show");
+
+  });
+
+}
+
+
+// ==========================================
+// CALCULADORA DE PROPINA
+// ==========================================
+
+const calculateTip =
+  document.getElementById("calculateTip");
+
+if (calculateTip) {
+
+  calculateTip.addEventListener("click", () => {
+
+    const bill = parseFloat(
+      document.getElementById("tipBill").value
+    );
+
+    const percent = parseFloat(
+      document.getElementById("tipPercent").value
+    );
+
+    const result =
+      document.getElementById("tipResult");
+
+    if (isNaN(bill) || isNaN(percent)) {
+
+      result.innerHTML =
+        "⚠️ Introduce valores válidos.";
+
+      result.classList.add("show");
+
+      return;
+    }
+
+    const tip =
+      bill * (percent / 100);
+
+    const total =
+      bill + tip;
+
+    result.innerHTML = `
+      <div class="result-number">
+        $${total.toLocaleString()}
+      </div>
+
+      <div class="result-text">
+        Propina: $${tip.toLocaleString()}
+      </div>
+    `;
+
+    result.classList.add("show");
+
+  });
+
+                                    }
