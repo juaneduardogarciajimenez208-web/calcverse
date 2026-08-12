@@ -226,11 +226,19 @@ categories.forEach(category => {
 
       });
 
-    } else {
+    } else if (selectedCategory === "finanzas") {
 
-      alert(
+    document
+        .getElementById("finanzas")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+} else {
+
+    alert(
         "🚀 Esta categoría estará disponible próximamente."
-      );
+    );
 
     }
 
