@@ -659,3 +659,35 @@ if (calculateTip) {
   });
 
                                     }
+// ==========================================
+// CALCULADORA DE PROMEDIO - EDUCACIÓN
+// ==========================================
+
+const calculateAverage = document.getElementById("calculateAverage");
+const averageResult = document.getElementById("averageResult");
+
+if (calculateAverage) {
+
+  calculateAverage.addEventListener("click", () => {
+
+    const grade1 = parseFloat(document.getElementById("grade1").value);
+    const grade2 = parseFloat(document.getElementById("grade2").value);
+    const grade3 = parseFloat(document.getElementById("grade3").value);
+
+    if (
+      isNaN(grade1) ||
+      isNaN(grade2) ||
+      isNaN(grade3)
+    ) {
+      averageResult.textContent =
+        "⚠️ Introduce las tres calificaciones.";
+      return;
+    }
+
+    const average = (grade1 + grade2 + grade3) / 3;
+
+    averageResult.innerHTML =
+      `📚 Tu promedio es: <strong>${average.toFixed(2)}</strong>`;
+  });
+
+}
