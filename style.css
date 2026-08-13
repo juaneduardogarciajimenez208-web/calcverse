@@ -933,3 +933,31 @@ body.light-mode footer {
   background: #ffffff;
   border-top: 1px solid #e5e7eb;
    }
+/* ========================================
+   MODO CLARO
+   ======================================== */
+
+body.light-mode {
+  --bg: #f5f7fb;
+  --bg-secondary: #ffffff;
+  --card: #ffffff;
+  --card-hover: #f1f5f9;
+  --border: rgba(0, 0, 0, 0.08);
+  --text: #111827;
+  --text-secondary: #64748b;
+}
+
+body.light-mode .navbar {
+  background: rgba(255, 255, 255, 0.88);
+}
+
+body.light-mode .theme-btn {
+  background: var(--card);
+  color: var(--text);
+}
+
+body.light-mode .calculator-card,
+body.light-mode .blog-card,
+body.light-mode .category-card {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+   }
