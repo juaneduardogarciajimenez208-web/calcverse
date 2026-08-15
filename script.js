@@ -864,3 +864,47 @@ if (calculateMath) {
   });
 
 }
+// ==========================================
+// REGLA DE TRES - MATEMÁTICAS
+// ==========================================
+
+const calculateRule = document.getElementById("calculateRule");
+
+if (calculateRule) {
+
+  calculateRule.addEventListener("click", () => {
+
+    const a = parseFloat(
+      document.getElementById("ruleA").value
+    );
+
+    const b = parseFloat(
+      document.getElementById("ruleB").value
+    );
+
+    const c = parseFloat(
+      document.getElementById("ruleC").value
+    );
+
+    const result =
+      document.getElementById("ruleResult");
+
+    if (isNaN(a) || isNaN(b) || isNaN(c)) {
+      result.innerHTML = "⚠️ Completa los tres valores.";
+      return;
+    }
+
+    if (a === 0) {
+      result.innerHTML = "❌ A no puede ser 0.";
+      return;
+    }
+
+    const answer = (b * c) / a;
+
+    result.innerHTML = `
+      📐 Resultado:
+      <strong>${answer.toFixed(2)}</strong>
+    `;
+  });
+
+}
