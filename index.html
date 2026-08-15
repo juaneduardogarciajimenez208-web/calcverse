@@ -688,10 +688,69 @@
       </div>
 
     </article>
+<!-- CALIFICACIÓN NECESARIA -->
+<article class="calculator-card" data-category="educacion">
 
+  <div class="calculator-top">
+    <div class="calculator-icon">🎯</div>
+    <span>Educación</span>
+  </div>
+
+  <h3>Calificación necesaria</h3>
+
+  <p>
+    Descubre cuánto necesitas sacar en tu próxima evaluación
+    para alcanzar el promedio que deseas.
+  </p>
+
+  <div class="form-group">
+    <label for="currentAverage">Promedio actual</label>
+    <input
+      type="number"
+      id="currentAverage"
+      placeholder="Ej. 85"
+      min="0"
+      max="100"
+    >
+  </div>
+
+  <div class="form-group">
+    <label for="desiredAverage">Promedio deseado</label>
+    <input
+      type="number"
+      id="desiredAverage"
+      placeholder="Ej. 90"
+      min="0"
+      max="100"
+    >
+  </div>
+
+  <div class="form-group">
+    <label for="nextWeight">Valor de la próxima evaluación (%)</label>
+    <input
+      type="number"
+      id="nextWeight"
+      placeholder="Ej. 30"
+      min="1"
+      max="100"
+    >
+  </div>
+
+  <button id="calculateNeeded" class="calculator-btn">
+    Calcular
+  </button>
+
+  <div
+    id="neededResult"
+    class="result"
+    aria-live="polite">
+  </div>
+
+      </article>
   </div>
 
   </section>
+    
 <!-- BLOG -->
 <section id="blog" class="section">
 
