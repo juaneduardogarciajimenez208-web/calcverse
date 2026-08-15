@@ -999,3 +999,66 @@ if (calculateFraction) {
   });
 
 }
+// ==========================================
+// POTENCIAS Y RAÍCES - MATEMÁTICAS
+// ==========================================
+
+const calculatePower =
+  document.getElementById("calculatePower");
+
+const calculateSquareRoot =
+  document.getElementById("calculateSquareRoot");
+
+const powerResult =
+  document.getElementById("powerResult");
+
+if (calculatePower) {
+
+  calculatePower.addEventListener("click", () => {
+
+    const number =
+      parseFloat(document.getElementById("powerNumber").value);
+
+    const exponent =
+      parseFloat(document.getElementById("powerExponent").value);
+
+    if (isNaN(number) || isNaN(exponent)) {
+      powerResult.innerHTML = "⚠️ Completa los campos.";
+      return;
+    }
+
+    const result = Math.pow(number, exponent);
+
+    powerResult.innerHTML = `
+      ⚡ Resultado: <strong>${result}</strong>
+    `;
+  });
+
+}
+
+if (calculateSquareRoot) {
+
+  calculateSquareRoot.addEventListener("click", () => {
+
+    const number =
+      parseFloat(document.getElementById("powerNumber").value);
+
+    if (isNaN(number)) {
+      powerResult.innerHTML = "⚠️ Introduce un número.";
+      return;
+    }
+
+    if (number < 0) {
+      powerResult.innerHTML =
+        "❌ No se puede calcular la raíz cuadrada de un número negativo.";
+      return;
+    }
+
+    const result = Math.sqrt(number);
+
+    powerResult.innerHTML = `
+      √ Resultado: <strong>${result.toFixed(2)}</strong>
+    `;
+  });
+
+  }
