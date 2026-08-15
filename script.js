@@ -747,3 +747,60 @@ if (calculateNeeded) {
   });
 
       }
+// ==========================================
+// PROMEDIO PONDERADO - EDUCACIÓN
+// ==========================================
+
+const calculateWeighted =
+  document.getElementById("calculateWeighted");
+
+if (calculateWeighted) {
+
+  calculateWeighted.addEventListener("click", () => {
+
+    const grade1 = parseFloat(
+      document.getElementById("weightedGrade1").value
+    );
+
+    const weight1 = parseFloat(
+      document.getElementById("weightedWeight1").value
+    );
+
+    const grade2 = parseFloat(
+      document.getElementById("weightedGrade2").value
+    );
+
+    const weight2 = parseFloat(
+      document.getElementById("weightedWeight2").value
+    );
+
+    const result =
+      document.getElementById("weightedResult");
+
+    if (
+      isNaN(grade1) ||
+      isNaN(weight1) ||
+      isNaN(grade2) ||
+      isNaN(weight2)
+    ) {
+      result.innerHTML = "⚠️ Completa todos los campos.";
+      return;
+    }
+
+    if (weight1 + weight2 !== 100) {
+      result.innerHTML =
+        "⚠️ Los porcentajes deben sumar exactamente 100%.";
+      return;
+    }
+
+    const average =
+      (grade1 * weight1 / 100) +
+      (grade2 * weight2 / 100);
+
+    result.innerHTML = `
+      ⚖️ Tu promedio ponderado es:
+      <strong>${average.toFixed(2)}</strong>
+    `;
+  });
+
+}
