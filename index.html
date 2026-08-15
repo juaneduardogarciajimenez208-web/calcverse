@@ -747,6 +747,47 @@
   </div>
 
       </article>
+    <!-- PROMEDIO PONDERADO -->
+<article class="calculator-card" data-category="educacion">
+
+  <div class="calculator-top">
+    <div class="calculator-icon">⚖️</div>
+    <span>Educación</span>
+  </div>
+
+  <h3>Promedio ponderado</h3>
+
+  <p>
+    Calcula tu promedio cuando cada calificación tiene un valor diferente.
+  </p>
+
+  <div class="form-group">
+    <label for="weightedGrade1">Calificación 1</label>
+    <input type="number" id="weightedGrade1" placeholder="Ej. 90">
+  </div>
+
+  <div class="form-group">
+    <label for="weightedWeight1">Valor (%)</label>
+    <input type="number" id="weightedWeight1" placeholder="Ej. 40">
+  </div>
+
+  <div class="form-group">
+    <label for="weightedGrade2">Calificación 2</label>
+    <input type="number" id="weightedGrade2" placeholder="Ej. 80">
+  </div>
+
+  <div class="form-group">
+    <label for="weightedWeight2">Valor (%)</label>
+    <input type="number" id="weightedWeight2" placeholder="Ej. 60">
+  </div>
+
+  <button id="calculateWeighted" class="calculator-btn">
+    Calcular promedio
+  </button>
+
+  <div id="weightedResult" class="result" aria-live="polite"></div>
+
+  </article>
   </div>
 
   </section>
