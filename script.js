@@ -804,3 +804,63 @@ if (calculateWeighted) {
   });
 
 }
+// ==========================================
+// OPERACIONES BÁSICAS - MATEMÁTICAS
+// ==========================================
+
+const calculateMath = document.getElementById("calculateMath");
+
+if (calculateMath) {
+
+  calculateMath.addEventListener("click", () => {
+
+    const number1 = parseFloat(
+      document.getElementById("mathNumber1").value
+    );
+
+    const number2 = parseFloat(
+      document.getElementById("mathNumber2").value
+    );
+
+    const operation =
+      document.getElementById("mathOperation").value;
+
+    const result =
+      document.getElementById("mathResult");
+
+    if (isNaN(number1) || isNaN(number2)) {
+      result.innerHTML = "⚠️ Introduce los dos números.";
+      return;
+    }
+
+    let answer;
+
+    if (operation === "sum") {
+      answer = number1 + number2;
+    }
+
+    if (operation === "subtract") {
+      answer = number1 - number2;
+    }
+
+    if (operation === "multiply") {
+      answer = number1 * number2;
+    }
+
+    if (operation === "divide") {
+
+      if (number2 === 0) {
+        result.innerHTML = "❌ No se puede dividir entre cero.";
+        return;
+      }
+
+      answer = number1 / number2;
+    }
+
+    result.innerHTML = `
+      🧮 Resultado:
+      <strong>${answer}</strong>
+    `;
+  });
+
+}
