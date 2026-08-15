@@ -908,3 +908,94 @@ if (calculateRule) {
   });
 
 }
+// ==========================================
+// CALCULADORA DE FRACCIONES - MATEMÁTICAS
+// ==========================================
+
+const calculateFraction =
+  document.getElementById("calculateFraction");
+
+if (calculateFraction) {
+
+  calculateFraction.addEventListener("click", () => {
+
+    const n1 = parseInt(document.getElementById("fractionNum1").value);
+    const d1 = parseInt(document.getElementById("fractionDen1").value);
+    const n2 = parseInt(document.getElementById("fractionNum2").value);
+    const d2 = parseInt(document.getElementById("fractionDen2").value);
+
+    const operation =
+      document.getElementById("fractionOperation").value;
+
+    const result =
+      document.getElementById("fractionResult");
+
+    if ([n1, d1, n2, d2].some(isNaN)) {
+      result.innerHTML = "⚠️ Completa todos los campos.";
+      return;
+    }
+
+    if (d1 === 0 || d2 === 0) {
+      result.innerHTML = "❌ Los denominadores no pueden ser 0.";
+      return;
+    }
+
+    let numerator;
+    let denominator;
+
+    if (operation === "add") {
+      numerator = n1 * d2 + n2 * d1;
+      denominator = d1 * d2;
+    }
+
+    if (operation === "subtract") {
+      numerator = n1 * d2 - n2 * d1;
+      denominator = d1 * d2;
+    }
+
+    if (operation === "multiply") {
+      numerator = n1 * n2;
+      denominator = d1 * d2;
+    }
+
+    if (operation === "divide") {
+
+      if (n2 === 0) {
+        result.innerHTML = "❌ No se puede dividir entre 0.";
+        return;
+      }
+
+      numerator = n1 * d2;
+      denominator = d1 * n2;
+    }
+
+    const gcd = (a, b) => {
+      a = Math.abs(a);
+      b = Math.abs(b);
+
+      while (b !== 0) {
+        const temp = b;
+        b = a % b;
+        a = temp;
+      }
+
+      return a;
+    };
+
+    const divisor = gcd(numerator, denominator);
+
+    numerator /= divisor;
+    denominator /= divisor;
+
+    if (denominator < 0) {
+      numerator *= -1;
+      denominator *= -1;
+    }
+
+    result.innerHTML = `
+      🍕 Resultado:
+      <strong>${numerator}/${denominator}</strong>
+    `;
+  });
+
+}
