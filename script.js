@@ -691,3 +691,59 @@ if (calculateAverage) {
   });
 
 }
+// ==========================================
+// CALIFICACIÓN NECESARIA - EDUCACIÓN
+// ==========================================
+
+const calculateNeeded = document.getElementById("calculateNeeded");
+
+if (calculateNeeded) {
+
+  calculateNeeded.addEventListener("click", () => {
+
+    const current = parseFloat(
+      document.getElementById("currentAverage").value
+    );
+
+    const desired = parseFloat(
+      document.getElementById("desiredAverage").value
+    );
+
+    const weight = parseFloat(
+      document.getElementById("nextWeight").value
+    );
+
+    const result = document.getElementById("neededResult");
+
+    if (isNaN(current) || isNaN(desired) || isNaN(weight)) {
+      result.innerHTML = "⚠️ Completa todos los campos.";
+      return;
+    }
+
+    if (weight <= 0 || weight > 100) {
+      result.innerHTML = "⚠️ El porcentaje debe estar entre 1 y 100.";
+      return;
+    }
+
+    const needed =
+      (desired - current * (1 - weight / 100)) / (weight / 100);
+
+    if (needed > 100) {
+      result.innerHTML =
+        "❌ Necesitarías más de 100 puntos. Ese promedio no sería posible con esa evaluación.";
+      return;
+    }
+
+    if (needed <= 0) {
+      result.innerHTML =
+        "🔥 ¡Ya tienes el promedio deseado!";
+      return;
+    }
+
+    result.innerHTML = `
+      🎯 Necesitas sacar:
+      <strong>${needed.toFixed(2)}</strong>
+    `;
+  });
+
+      }
