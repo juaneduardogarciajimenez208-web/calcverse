@@ -1062,3 +1062,42 @@ if (calculateSquareRoot) {
   });
 
   }
+// ==========================================
+// CONVERSOR DE LONGITUD
+// ==========================================
+
+const convertLength = document.getElementById("convertLength");
+
+if (convertLength) {
+
+  convertLength.addEventListener("click", () => {
+
+    const value = parseFloat(
+      document.getElementById("lengthValue").value
+    );
+
+    const from = document.getElementById("lengthFrom").value;
+    const to = document.getElementById("lengthTo").value;
+    const result = document.getElementById("lengthResult");
+
+    if (isNaN(value)) {
+      result.innerHTML = "⚠️ Introduce un valor.";
+      return;
+    }
+
+    const meters = {
+      m: 1,
+      km: 1000,
+      cm: 0.01,
+      mi: 1609.344
+    };
+
+    const converted = value * meters[from] / meters[to];
+
+    result.innerHTML = `
+      📏 Resultado:
+      <strong>${converted.toFixed(4)}</strong>
+    `;
+  });
+
+                                  }
