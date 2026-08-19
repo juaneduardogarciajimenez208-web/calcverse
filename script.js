@@ -1141,3 +1141,53 @@ if (convertWeight) {
   });
 
 }
+// ==========================================
+// CONVERSOR DE TEMPERATURA
+// ==========================================
+
+const convertTemperature = document.getElementById("convertTemperature");
+
+if (convertTemperature) {
+
+  convertTemperature.addEventListener("click", () => {
+
+    const value = parseFloat(
+      document.getElementById("temperatureValue").value
+    );
+
+    const from = document.getElementById("temperatureFrom").value;
+    const to = document.getElementById("temperatureTo").value;
+    const result = document.getElementById("temperatureResult");
+
+    if (isNaN(value)) {
+      result.innerHTML = "⚠️ Introduce un valor.";
+      return;
+    }
+
+    let celsius;
+
+    if (from === "celsius") {
+      celsius = value;
+    } else if (from === "fahrenheit") {
+      celsius = (value - 32) * 5 / 9;
+    } else {
+      celsius = value - 273.15;
+    }
+
+    let converted;
+
+    if (to === "celsius") {
+      converted = celsius;
+    } else if (to === "fahrenheit") {
+      converted = (celsius * 9 / 5) + 32;
+    } else {
+      converted = celsius + 273.15;
+    }
+
+    result.innerHTML = `
+      🌡️ Resultado:
+      <strong>${converted.toFixed(2)}</strong>
+    `;
+  });
+
+}
