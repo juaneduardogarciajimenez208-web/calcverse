@@ -1063,6 +1063,48 @@
   <div id="weightResult" class="result" aria-live="polite"></div>
 
 </article>
+    <!-- CONVERSOR DE TEMPERATURA -->
+<article class="calculator-card" data-category="conversores">
+
+  <div class="calculator-top">
+    <div class="calculator-icon">🌡️</div>
+    <span>Conversores</span>
+  </div>
+
+  <h3>Conversor de temperatura</h3>
+
+  <p>Convierte entre Celsius, Fahrenheit y Kelvin.</p>
+
+  <div class="form-group">
+    <label for="temperatureValue">Valor</label>
+    <input type="number" id="temperatureValue" placeholder="Ej. 25">
+  </div>
+
+  <div class="form-group">
+    <label for="temperatureFrom">Convertir de</label>
+    <select id="temperatureFrom">
+      <option value="celsius">Celsius</option>
+      <option value="fahrenheit">Fahrenheit</option>
+      <option value="kelvin">Kelvin</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="temperatureTo">Convertir a</label>
+    <select id="temperatureTo">
+      <option value="celsius">Celsius</option>
+      <option value="fahrenheit">Fahrenheit</option>
+      <option value="kelvin">Kelvin</option>
+    </select>
+  </div>
+
+  <button id="convertTemperature" class="calculator-btn">
+    Convertir
+  </button>
+
+  <div id="temperatureResult" class="result" aria-live="polite"></div>
+
+  </article>
   </div>
 
   </section>
