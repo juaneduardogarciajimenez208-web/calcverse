@@ -1101,3 +1101,43 @@ if (convertLength) {
   });
 
                                   }
+// ==========================================
+// CONVERSOR DE PESO
+// ==========================================
+
+const convertWeight = document.getElementById("convertWeight");
+
+if (convertWeight) {
+
+  convertWeight.addEventListener("click", () => {
+
+    const value = parseFloat(
+      document.getElementById("weightValue").value
+    );
+
+    const from = document.getElementById("weightFrom").value;
+    const to = document.getElementById("weightTo").value;
+    const result = document.getElementById("weightResult");
+
+    if (isNaN(value)) {
+      result.innerHTML = "⚠️ Introduce un valor.";
+      return;
+    }
+
+    const toKg = {
+      kg: 1,
+      g: 0.001,
+      lb: 0.45359237,
+      oz: 0.0283495231
+    };
+
+    const kilograms = value * toKg[from];
+    const converted = kilograms / toKg[to];
+
+    result.innerHTML = `
+      ⚖️ Resultado:
+      <strong>${converted.toFixed(2)}</strong>
+    `;
+  });
+
+}
