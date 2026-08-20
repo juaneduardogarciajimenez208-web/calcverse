@@ -1191,3 +1191,43 @@ if (convertTemperature) {
   });
 
 }
+// ==========================================
+// CONVERSOR DE TIEMPO
+// ==========================================
+
+const convertTime = document.getElementById("convertTime");
+
+if (convertTime) {
+
+  convertTime.addEventListener("click", () => {
+
+    const value = parseFloat(
+      document.getElementById("timeValue").value
+    );
+
+    const from = document.getElementById("timeFrom").value;
+    const to = document.getElementById("timeTo").value;
+    const result = document.getElementById("timeResult");
+
+    if (isNaN(value)) {
+      result.innerHTML = "⚠️ Introduce un valor.";
+      return;
+    }
+
+    const toSeconds = {
+      seconds: 1,
+      minutes: 60,
+      hours: 3600,
+      days: 86400
+    };
+
+    const seconds = value * toSeconds[from];
+    const converted = seconds / toSeconds[to];
+
+    result.innerHTML = `
+      ⏱️ Resultado:
+      <strong>${converted.toFixed(2)}</strong>
+    `;
+  });
+
+  }
