@@ -1271,3 +1271,37 @@ if (convertArea) {
   });
 
 }
+// ==========================================
+// NAVEGACIÓN DE CATEGORÍAS
+// ==========================================
+
+const categoryCards = document.querySelectorAll(".category-card");
+
+categoryCards.forEach(card => {
+
+  card.addEventListener("click", () => {
+
+    const category = card.dataset.category;
+
+    const sections = {
+      salud: "calculadoras",
+      finanzas: "finanzas",
+      educacion: "educacion",
+      matematicas: "matematicas",
+      conversores: "conversores",
+      vida: "vida"
+    };
+
+    const targetId = sections[category];
+    const target = document.getElementById(targetId);
+
+    if (target) {
+      target.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    }
+
+  });
+
+});
