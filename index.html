@@ -1105,6 +1105,50 @@
   <div id="temperatureResult" class="result" aria-live="polite"></div>
 
   </article>
+    <!-- CONVERSOR DE TIEMPO -->
+<article class="calculator-card" data-category="conversores">
+
+  <div class="calculator-top">
+    <div class="calculator-icon">⏱️</div>
+    <span>Conversores</span>
+  </div>
+
+  <h3>Conversor de tiempo</h3>
+
+  <p>Convierte entre segundos, minutos, horas y días.</p>
+
+  <div class="form-group">
+    <label for="timeValue">Valor</label>
+    <input type="number" id="timeValue" placeholder="Ej. 60">
+  </div>
+
+  <div class="form-group">
+    <label for="timeFrom">Convertir de</label>
+    <select id="timeFrom">
+      <option value="seconds">Segundos</option>
+      <option value="minutes">Minutos</option>
+      <option value="hours">Horas</option>
+      <option value="days">Días</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="timeTo">Convertir a</label>
+    <select id="timeTo">
+      <option value="seconds">Segundos</option>
+      <option value="minutes">Minutos</option>
+      <option value="hours">Horas</option>
+      <option value="days">Días</option>
+    </select>
+  </div>
+
+  <button id="convertTime" class="calculator-btn">
+    Convertir
+  </button>
+
+  <div id="timeResult" class="result" aria-live="polite"></div>
+
+</article>
   </div>
 
   </section>
