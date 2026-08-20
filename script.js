@@ -1231,3 +1231,43 @@ if (convertTime) {
   });
 
   }
+// ==========================================
+// CONVERSOR DE ÁREA
+// ==========================================
+
+const convertArea = document.getElementById("convertArea");
+
+if (convertArea) {
+
+  convertArea.addEventListener("click", () => {
+
+    const value = parseFloat(
+      document.getElementById("areaValue").value
+    );
+
+    const from = document.getElementById("areaFrom").value;
+    const to = document.getElementById("areaTo").value;
+    const result = document.getElementById("areaResult");
+
+    if (isNaN(value)) {
+      result.innerHTML = "⚠️ Introduce un valor.";
+      return;
+    }
+
+    const toM2 = {
+      m2: 1,
+      km2: 1000000,
+      hectare: 10000,
+      acre: 4046.8564224
+    };
+
+    const squareMeters = value * toM2[from];
+    const converted = squareMeters / toM2[to];
+
+    result.innerHTML = `
+      📐 Resultado:
+      <strong>${converted.toFixed(2)}</strong>
+    `;
+  });
+
+}
